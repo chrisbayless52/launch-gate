@@ -1,251 +1,79 @@
-import {
-  Page,
-  Layout,
-  Card,
-  Text,
-  BlockStack,
-  List,
-  Divider,
-  Box,
-} from "@shopify/polaris";
-
 export default function PrivacyPolicy() {
   return (
-    <Page
-      title="Privacy Policy"
-      subtitle="LaunchGate — Shopify Handoff Report"
-      backAction={{ content: "Back", url: "/app" }}
-    >
-      <Layout>
-        <Layout.Section>
-          <BlockStack gap="600">
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Privacy Policy — LaunchGate</title>
+        <style>{`
+          body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 24px; color: #1a1a1a; line-height: 1.6; }
+          h1 { font-size: 2rem; margin-bottom: 4px; }
+          h2 { font-size: 1.2rem; margin-top: 2rem; }
+          p, li { font-size: 1rem; color: #333; }
+          a { color: #008060; }
+          table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+          th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #e1e3e5; font-size: 0.95rem; }
+          th { background: #f6f6f7; font-weight: 600; }
+          .subtitle { color: #6d7175; margin-bottom: 2rem; }
+        `}</style>
+      </head>
+      <body>
+        <h1>Privacy Policy</h1>
+        <p className="subtitle">LaunchGate · Last updated: May 18, 2026 · <a href="mailto:support@getlaunchgate.com">support@getlaunchgate.com</a></p>
 
-            <Card>
-              <BlockStack gap="400">
-                <Text as="p" tone="subdued">
-                  Last updated: May 16, 2025 · Contact:{" "}
-                  <a href="mailto:support@launchgate.app">support@launchgate.app</a>
-                </Text>
-                <Text as="p">
-                  LaunchGate ("we", "our", "us") is a Shopify app that generates
-                  a one-time handoff PDF report of your store's configuration.
-                  This policy explains exactly what data we access, what we
-                  store, and how long we keep it.
-                </Text>
-              </BlockStack>
-            </Card>
+        <p>LaunchGate ("we", "our", "us") is a Shopify app that generates a one-time handoff PDF report of your store's configuration. This policy explains exactly what data we access, what we store, and how long we keep it.</p>
 
-            <Card>
-              <BlockStack gap="400">
-                <Text as="h2" variant="headingMd">Data we access (read-only)</Text>
-                <Text as="p">
-                  When you generate a report, we make the following read-only
-                  API calls to your Shopify store. We never write, modify, or
-                  delete any store data.
-                </Text>
-                <List type="bullet">
-                  <List.Item>
-                    <strong>Store overview</strong> — shop name, plan name,
-                    primary domain, currency, timezone, and contact email
-                  </List.Item>
-                  <List.Item>
-                    <strong>Installed apps</strong> — app names and developer
-                    names (requires read access granted at install)
-                  </List.Item>
-                  <List.Item>
-                    <strong>Active theme</strong> — theme name and published
-                    status
-                  </List.Item>
-                  <List.Item>
-                    <strong>Payment configuration</strong> — supported digital
-                    wallets and payment settings (no card or transaction data)
-                  </List.Item>
-                  <List.Item>
-                    <strong>Shipping profiles</strong> — delivery profile names
-                    and zone counts
-                  </List.Item>
-                  <List.Item>
-                    <strong>Custom domains</strong> — domain names and SSL
-                    status
-                  </List.Item>
-                  <List.Item>
-                    <strong>Staff contact</strong> — the store owner's email
-                    address (used as the primary contact in the report)
-                  </List.Item>
-                </List>
-                <Text as="p" tone="subdued" variant="bodySm">
-                  All data is fetched at report generation time and used only
-                  to produce your PDF. It is not retained in our database after
-                  the PDF is generated.
-                </Text>
-              </BlockStack>
-            </Card>
+        <h2>Data we access (read-only)</h2>
+        <p>When you generate a report, we make the following read-only API calls to your Shopify store. We never write, modify, or delete any store data.</p>
+        <ul>
+          <li><strong>Store overview</strong> — shop name, plan name, primary domain, currency, timezone, and contact email</li>
+          <li><strong>Active theme</strong> — theme name and published status</li>
+          <li><strong>Payment configuration</strong> — supported digital wallets and payment settings (no card or transaction data)</li>
+          <li><strong>Shipping profiles</strong> — delivery profile names and zone counts</li>
+          <li><strong>Custom domains</strong> — domain names and SSL status</li>
+          <li><strong>Staff contact</strong> — the store owner's email address (used as the primary contact in the report)</li>
+        </ul>
+        <p>All data is fetched at report generation time and used only to produce your PDF. It is not retained in our database after the PDF is generated.</p>
 
-            <Card>
-              <BlockStack gap="400">
-                <Text as="h2" variant="headingMd">Data we do NOT access or store</Text>
-                <List type="bullet">
-                  <List.Item>Customer names, email addresses, or any PII</List.Item>
-                  <List.Item>Order history or transaction amounts</List.Item>
-                  <List.Item>Product catalog, inventory, or pricing</List.Item>
-                  <List.Item>Discount codes or gift cards</List.Item>
-                  <List.Item>Analytics or marketing data</List.Item>
-                  <List.Item>Payment card details (we never see these)</List.Item>
-                  <List.Item>Any data from your customers' browsers</List.Item>
-                </List>
-              </BlockStack>
-            </Card>
+        <h2>Data we do NOT access or store</h2>
+        <ul>
+          <li>Customer names, email addresses, or any PII</li>
+          <li>Order history or transaction amounts</li>
+          <li>Product catalog, inventory, or pricing</li>
+          <li>Discount codes or gift cards</li>
+          <li>Analytics or marketing data</li>
+          <li>Payment card details (we never see these)</li>
+        </ul>
 
-            <Card>
-              <BlockStack gap="400">
-                <Text as="h2" variant="headingMd">Data we store in our database</Text>
-                <BlockStack gap="300">
-                  <BlockStack gap="100">
-                    <Text as="p" variant="bodyMd" fontWeight="semibold">Shopify session token</Text>
-                    <Text as="p">
-                      Required for OAuth authentication. Contains your shop
-                      domain and an encrypted access token so you stay logged
-                      in. This is standard for all Shopify embedded apps.
-                    </Text>
-                    <Text as="p" tone="subdued" variant="bodySm">
-                      Retention: deleted automatically when you uninstall the
-                      app (via the <code>app/uninstalled</code> webhook).
-                    </Text>
-                  </BlockStack>
+        <h2>Data we store in our database</h2>
+        <p><strong>Shopify session token</strong> — Required for OAuth authentication. Contains your shop domain and an encrypted access token. Deleted automatically when you uninstall the app.</p>
+        <p><strong>Purchase record</strong> — When you complete the one-time purchase, we store your shop domain, the Shopify charge ID, and the timestamp of payment. Retained for 90 days, then deleted.</p>
 
-                  <Divider />
+        <h2>Data retention summary</h2>
+        <table>
+          <thead>
+            <tr><th>Data type</th><th>Retention</th><th>Deletion trigger</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Session token</td><td>Until uninstall</td><td>app/uninstalled webhook</td></tr>
+            <tr><td>Purchase record</td><td>90 days</td><td>Automatic expiry</td></tr>
+            <tr><td>Store data (for PDF)</td><td>Not stored</td><td>Discarded after PDF generation</td></tr>
+          </tbody>
+        </table>
 
-                  <BlockStack gap="100">
-                    <Text as="p" variant="bodyMd" fontWeight="semibold">Purchase record</Text>
-                    <Text as="p">
-                      When you complete the one-time purchase, we store your
-                      shop domain, the Shopify charge ID (a reference number
-                      from Shopify's billing system), and the timestamp of
-                      payment. This lets us verify you have an active purchase
-                      within the 30-day window.
-                    </Text>
-                    <Text as="p" tone="subdued" variant="bodySm">
-                      Retention: 90 days from purchase date, then deleted.
-                    </Text>
-                  </BlockStack>
+        <h2>Third-party services</h2>
+        <ul>
+          <li><strong>Shopify</strong> — authentication, billing, and store data APIs.</li>
+          <li><strong>Railway</strong> — server and database hosting. No customer data is shared.</li>
+        </ul>
+        <p>We do not use advertising networks, analytics trackers, or sell data to any third party.</p>
 
-                  <Divider />
+        <h2>Your rights</h2>
+        <p>You may request deletion of all data we hold for your store at any time by emailing <a href="mailto:support@getlaunchgate.com">support@getlaunchgate.com</a>. We will respond within 5 business days. Uninstalling the app automatically triggers deletion of your session data.</p>
 
-                  <BlockStack gap="100">
-                    <Text as="p" variant="bodyMd" fontWeight="semibold">Credential notes (optional)</Text>
-                    <Text as="p">
-                      If you type notes into the credential notes field, that
-                      text is sent directly to our server, used to render your
-                      PDF, and then immediately discarded. It is never stored
-                      in our database.
-                    </Text>
-                  </BlockStack>
-                </BlockStack>
-              </BlockStack>
-            </Card>
-
-            <Card>
-              <BlockStack gap="400">
-                <Text as="h2" variant="headingMd">Data retention summary</Text>
-                <Box overflowX="scroll">
-                  <table style={{ width: "100%", borderCollapse: "collapse" }}>
-                    <thead>
-                      <tr style={{ backgroundColor: "#f6f6f7" }}>
-                        <th style={{ padding: "8px 12px", textAlign: "left", borderBottom: "1px solid #e1e3e5" }}>Data type</th>
-                        <th style={{ padding: "8px 12px", textAlign: "left", borderBottom: "1px solid #e1e3e5" }}>Retention</th>
-                        <th style={{ padding: "8px 12px", textAlign: "left", borderBottom: "1px solid #e1e3e5" }}>Deletion trigger</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {[
-                        ["Session token", "Until uninstall", "app/uninstalled webhook"],
-                        ["Purchase record", "90 days", "Automatic expiry"],
-                        ["Store data (for PDF)", "Not stored", "Discarded after PDF generation"],
-                        ["Credential notes", "Not stored", "Discarded after PDF generation"],
-                      ].map(([type, retention, trigger]) => (
-                        <tr key={type} style={{ borderBottom: "1px solid #e1e3e5" }}>
-                          <td style={{ padding: "8px 12px" }}>{type}</td>
-                          <td style={{ padding: "8px 12px" }}>{retention}</td>
-                          <td style={{ padding: "8px 12px", color: "#6d7175" }}>{trigger}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </Box>
-              </BlockStack>
-            </Card>
-
-            <Card>
-              <BlockStack gap="400">
-                <Text as="h2" variant="headingMd">Third-party services</Text>
-                <List type="bullet">
-                  <List.Item>
-                    <strong>Shopify</strong> — authentication, billing, and
-                    store data APIs. Governed by Shopify's Privacy Policy.
-                  </List.Item>
-                  <List.Item>
-                    <strong>Railway</strong> (or similar cloud host) — server
-                    hosting. No customer data is shared; only our application
-                    code runs on their infrastructure.
-                  </List.Item>
-                  <List.Item>
-                    <strong>Prisma / SQLite</strong> — local database for
-                    session and purchase records only.
-                  </List.Item>
-                </List>
-                <Text as="p">
-                  We do not use advertising networks, analytics trackers, or
-                  sell data to any third party.
-                </Text>
-              </BlockStack>
-            </Card>
-
-            <Card>
-              <BlockStack gap="400">
-                <Text as="h2" variant="headingMd">Your rights</Text>
-                <Text as="p">
-                  You may request deletion of all data we hold for your store at
-                  any time by emailing{" "}
-                  <a href="mailto:support@launchgate.app">support@launchgate.app</a>.
-                  We will respond within 5 business days. Uninstalling the app
-                  automatically triggers deletion of your session data via the
-                  Shopify GDPR webhook.
-                </Text>
-              </BlockStack>
-            </Card>
-
-            <Card>
-              <BlockStack gap="400">
-                <Text as="h2" variant="headingMd">Changes to this policy</Text>
-                <Text as="p">
-                  If we make material changes, we will update the "Last updated"
-                  date above and notify you via the Shopify Partner Dashboard
-                  notification system. Continued use of the app after changes
-                  constitutes acceptance of the revised policy.
-                </Text>
-              </BlockStack>
-            </Card>
-
-            <Card>
-              <BlockStack gap="300">
-                <Text as="h2" variant="headingMd">Contact</Text>
-                <Text as="p">
-                  Questions about this privacy policy or your data:
-                </Text>
-                <Text as="p">
-                  Email:{" "}
-                  <a href="mailto:support@launchgate.app">
-                    support@launchgate.app
-                  </a>
-                  <br />
-                  Response time: within 2 business days
-                </Text>
-              </BlockStack>
-            </Card>
-
-          </BlockStack>
-        </Layout.Section>
-      </Layout>
-    </Page>
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:support@getlaunchgate.com">support@getlaunchgate.com</a><br />Response time: within 2 business days</p>
+      </body>
+    </html>
   );
 }
