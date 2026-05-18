@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["nodejs_20", "chromium", "fontconfig", "freetype", "glib", "nss", "nspr", "atk", "at-spi2-atk", "cups", "dbus", "expat", "libxcb", "libX11", "libXcomposite", "libXdamage", "libXext", "libXfixes", "libXrandr", "mesa", "alsa-lib", "pango", "cairo", "xdg-utils"]
+
+[phases.install]
+cmds = ["npm ci --ignore-scripts"]
+
+[phases.build]
+cmds = ["npx prisma generate", "npm run build"]
+
+[start]
+cmd = "npx prisma migrate deploy && npx react-router-serve ./build/server/index.js"
