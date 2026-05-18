@@ -18,9 +18,9 @@ export default function App() {
   return (
     <div className={styles.index}>
       <div className={styles.content}>
-        <h1 className={styles.heading}>A short heading about [your app]</h1>
+        <h1 className={styles.heading}>Professional store handoff reports, in one click</h1>
         <p className={styles.text}>
-          A tagline about [your app] that describes your value proposition.
+          LaunchGate generates a complete PDF snapshot of your Shopify store — themes, shipping, markets, payment setup, and more — so you can hand off to clients with confidence.
         </p>
         {showForm && (
           <Form className={styles.form} method="post" action="/auth/login">
@@ -36,16 +36,13 @@ export default function App() {
         )}
         <ul className={styles.list}>
           <li>
-            <strong>Product feature</strong>. Some detail about your feature and
-            its benefit to your customer.
+            <strong>One-click PDF report</strong>. Covers products, themes, shipping zones, markets, and orders in a clean, professional document.
           </li>
           <li>
-            <strong>Product feature</strong>. Some detail about your feature and
-            its benefit to your customer.
+            <strong>Instant download</strong>. No waiting, no emails, no manual data collection — your report is ready in seconds.
           </li>
           <li>
-            <strong>Product feature</strong>. Some detail about your feature and
-            its benefit to your customer.
+            <strong>Built for agencies</strong>. Perfect for developers and consultants handing off completed Shopify stores to clients.
           </li>
         </ul>
       </div>
