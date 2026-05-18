@@ -2,7 +2,7 @@
 
 client_id = "d0ff426353cda30b5034649635a01dc4"
 name = "LaunchGate"
-application_url = "https://www.getlaunchgate.com"
+application_url = "https://getlaunchgate.com"
 embedded = true
 
 [access_scopes]
@@ -27,7 +27,7 @@ customer_deletion_url = "/webhooks/customers/redact"
 shop_deletion_url = "/webhooks/shop/redact"
 
 [auth]
-redirect_urls = [ "https://www.getlaunchgate.com/api/auth" ]
+redirect_urls = [ "https://getlaunchgate.com/api/auth" ]
 
 [build]
 automatically_update_urls_on_dev = true
