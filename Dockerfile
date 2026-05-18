@@ -34,4 +34,4 @@ ENV NODE_ENV=production
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 EXPOSE 8080
 
-CMD ["sh", "-c", "npx prisma migrate deploy --skip-generate && npx react-router-serve ./build/server/index.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npx react-router-serve ./build/server/index.js"]
