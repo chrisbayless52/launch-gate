@@ -2,7 +2,7 @@
 
 client_id = "d0ff426353cda30b5034649635a01dc4"
 name = "LaunchGate"
-application_url = "https://gasoline-impact-wage-hong.trycloudflare.com"
+application_url = "https://www.getlaunchgate.com"
 embedded = true
 
 [access_scopes]
@@ -21,7 +21,7 @@ api_version = "2026-07"
 
 
 [auth]
-redirect_urls = [ "https://gasoline-impact-wage-hong.trycloudflare.com/api/auth" ]
+redirect_urls = [ "https://www.getlaunchgate.com/api/auth" ]
 
 [build]
 include_config_on_deploy = true
