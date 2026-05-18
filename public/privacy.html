@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — LaunchGate</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #202223;
+      background: #f6f6f7;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background: #008060;
+      color: white;
+      padding: 24px 0;
+    }
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .header h1 { margin: 0 0 4px; font-size: 24px; font-weight: 700; }
+    .header p { margin: 0; opacity: 0.85; font-size: 14px; }
+    .container {
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 0 24px 60px;
+    }
+    .meta {
+      color: #6d7175;
+      font-size: 14px;
+      margin-bottom: 32px;
+    }
+    .meta a { color: #008060; }
+    .card {
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e1e3e5;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 12px;
+      color: #202223;
+    }
+    p { margin: 0 0 12px; }
+    p:last-child { margin-bottom: 0; }
+    ul { margin: 0 0 12px; padding-left: 20px; }
+    li { margin-bottom: 6px; }
+    hr { border: none; border-top: 1px solid #e1e3e5; margin: 16px 0; }
+    .label { font-weight: 600; display: block; margin-bottom: 4px; }
+    .muted { color: #6d7175; font-size: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th {
+      background: #f6f6f7;
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid #e1e3e5;
+      font-weight: 600;
+    }
+    td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #e1e3e5;
+      vertical-align: top;
+    }
+    td:last-child { color: #6d7175; }
+    a { color: #008060; }
+    code {
+      background: #f6f6f7;
+      border: 1px solid #e1e3e5;
+      border-radius: 3px;
+      padding: 1px 4px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <h1>LaunchGate — Privacy Policy</h1>
+    <p>Shopify Handoff Report Generator</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <p class="meta">
+    Last updated: May 16, 2025 &nbsp;·&nbsp;
+    Contact: <a href="mailto:support@launchgate.app">support@launchgate.app</a>
+  </p>
+
+  <div class="card">
+    <p>
+      LaunchGate ("we", "our", "us") is a Shopify app that generates a one-time
+      handoff PDF report of your store's configuration. This policy explains exactly
+      what data we access, what we store, and how long we keep it.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Data we access (read-only)</h2>
+    <p>
+      When you generate a report, we make the following read-only API calls to your
+      Shopify store. We never write, modify, or delete any store data.
+    </p>
+    <ul>
+      <li><strong>Store overview</strong> — shop name, plan name, primary domain, currency, timezone, and contact email</li>
+      <li><strong>Installed apps</strong> — app names and developer names</li>
+      <li><strong>Active theme</strong> — theme name and published status</li>
+      <li><strong>Payment configuration</strong> — supported digital wallets and payment settings (no card or transaction data)</li>
+      <li><strong>Shipping profiles</strong> — delivery profile names and zone counts</li>
+      <li><strong>Custom domains</strong> — domain names and SSL status</li>
+      <li><strong>Staff contact</strong> — the store owner's email address</li>
+    </ul>
+    <p class="muted">
+      All data is fetched at report generation time and used only to produce your PDF.
+      It is not retained in our database after the PDF is generated.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Data we do NOT access or store</h2>
+    <ul>
+      <li>Customer names, email addresses, or any personally identifiable information</li>
+      <li>Order history or transaction amounts</li>
+      <li>Product catalog, inventory, or pricing</li>
+      <li>Discount codes or gift cards</li>
+      <li>Analytics or marketing data</li>
+      <li>Payment card details</li>
+      <li>Any data from your customers' browsers</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Data we store in our database</h2>
+
+    <span class="label">Shopify session token</span>
+    <p>
+      Required for OAuth authentication. Contains your shop domain and an encrypted
+      access token so you stay logged in. This is standard for all Shopify embedded apps.
+    </p>
+    <p class="muted">Retention: deleted automatically when you uninstall the app (via the <code>app/uninstalled</code> webhook).</p>
+
+    <hr />
+
+    <span class="label">Purchase record</span>
+    <p>
+      When you complete the one-time purchase, we store your shop domain, the Shopify
+      charge ID (a reference number from Shopify's billing system), and the timestamp
+      of payment. This lets us verify you have an active purchase within the 30-day window.
+    </p>
+    <p class="muted">Retention: 90 days from purchase date, then deleted.</p>
+
+    <hr />
+
+    <span class="label">Credential notes (optional)</span>
+    <p>
+      If you type notes into the credential notes field, that text is sent to our server,
+      used to render your PDF, and then immediately discarded. It is never stored in our database.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Data retention summary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Data type</th>
+          <th>Retention</th>
+          <th>Deletion trigger</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Session token</td>
+          <td>Until uninstall</td>
+          <td>app/uninstalled webhook</td>
+        </tr>
+        <tr>
+          <td>Purchase record</td>
+          <td>90 days</td>
+          <td>Automatic expiry</td>
+        </tr>
+        <tr>
+          <td>Store data (for PDF)</td>
+          <td>Not stored</td>
+          <td>Discarded after PDF generation</td>
+        </tr>
+        <tr>
+          <td>Credential notes</td>
+          <td>Not stored</td>
+          <td>Discarded after PDF generation</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Third-party services</h2>
+    <ul>
+      <li>
+        <strong>Shopify</strong> — authentication, billing, and store data APIs.
+        Governed by <a href="https://www.shopify.com/legal/privacy" target="_blank" rel="noopener">Shopify's Privacy Policy</a>.
+      </li>
+      <li>
+        <strong>Railway</strong> (hosting) — server infrastructure. No customer data is shared;
+        only our application code runs on their infrastructure.
+      </li>
+    </ul>
+    <p>We do not use advertising networks, analytics trackers, or sell data to any third party.</p>
+  </div>
+
+  <div class="card">
+    <h2>Your rights</h2>
+    <p>
+      You may request deletion of all data we hold for your store at any time by emailing
+      <a href="mailto:support@launchgate.app">support@launchgate.app</a>. We will respond
+      within 5 business days. Uninstalling the app automatically triggers deletion of your
+      session data via the Shopify GDPR webhook.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Changes to this policy</h2>
+    <p>
+      If we make material changes, we will update the "Last updated" date above and notify
+      you via the Shopify Partner Dashboard notification system. Continued use of the app
+      after changes constitutes acceptance of the revised policy.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Contact</h2>
+    <p>
+      Questions about this privacy policy or your data:<br /><br />
+      <strong>Email:</strong> <a href="mailto:support@launchgate.app">support@launchgate.app</a><br />
+      <strong>Response time:</strong> within 2 business days
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

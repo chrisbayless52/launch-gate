@@ -1,0 +1,2 @@
+-- No-op: tables are created by the migrations below (timestamp-ordered).
+-- This file exists only to anchor the migration_lock.toml provider change.

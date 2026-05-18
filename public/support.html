@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — LaunchGate</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #202223;
+      background: #f6f6f7;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background: #008060;
+      color: white;
+      padding: 40px 0 32px;
+    }
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo {
+      width: 56px;
+      height: 56px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+    .header h1 { margin: 0 0 4px; font-size: 26px; font-weight: 700; }
+    .header p { margin: 0; opacity: 0.85; font-size: 15px; }
+    .container {
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 0 24px 60px;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e1e3e5;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 20px;
+      color: #202223;
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 6px;
+    }
+    p { margin: 0 0 12px; }
+    p:last-child { margin-bottom: 0; }
+    .steps { list-style: none; padding: 0; margin: 0; counter-reset: step; }
+    .steps li {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      align-items: flex-start;
+    }
+    .steps li:last-child { margin-bottom: 0; }
+    .step-num {
+      width: 32px;
+      height: 32px;
+      background: #008060;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-content strong { display: block; margin-bottom: 2px; }
+    .step-content p { margin: 0; color: #6d7175; font-size: 14px; }
+    .faq-item { margin-bottom: 20px; }
+    .faq-item:last-child { margin-bottom: 0; }
+    .faq-q {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .faq-a { color: #3d4246; }
+    hr { border: none; border-top: 1px solid #e1e3e5; margin: 20px 0; }
+    .contact-box {
+      background: #f0faf6;
+      border: 1px solid #b5e0d0;
+      border-radius: 8px;
+      padding: 20px 24px;
+    }
+    .contact-box h2 { margin-bottom: 8px; color: #006c52; }
+    .contact-box a { color: #008060; font-weight: 600; }
+    .badge {
+      display: inline-block;
+      background: #e4f5ef;
+      color: #006c52;
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="logo">📋</div>
+    <div>
+      <h1>LaunchGate <span style="opacity:0.7; font-weight:400; font-size:18px;">Support</span></h1>
+      <p>Shopify Handoff Report Generator</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="card">
+    <h2>How to use LaunchGate</h2>
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>Install the app and open it from your Shopify Admin</strong>
+          <p>Go to Apps → LaunchGate. You'll see a preview of what's included in your report.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>Add optional credential notes</strong>
+          <p>Enter any manual notes — API keys, DNS logins, hosting details — that your client will need. These appear in the report but are never stored on our servers.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>Complete the one-time purchase</strong>
+          <p>Click "Generate handoff report — $29". You'll be taken to Shopify's secure payment page. Approve the charge and you'll return to the app automatically.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <strong>Download your PDF</strong>
+          <p>Click "Download handoff report". A professionally formatted PDF will download immediately. You can re-download any time within 30 days of purchase.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">What data does this app access?</div>
+      <div class="faq-a">
+        LaunchGate reads store configuration data only — your store name, installed apps, active theme,
+        payment gateways, shipping profiles, custom domains, and store owner email. It never accesses
+        customer records, order history, or product data. All access is read-only; we cannot modify
+        your store. See our <a href="/privacy.html">full privacy policy</a> for details.
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="faq-item">
+      <div class="faq-q">Is this a subscription? <span class="badge">Pricing</span></div>
+      <div class="faq-a">
+        No. LaunchGate is a one-time charge of $29 per store, billed securely through your
+        existing Shopify account. Your purchase is valid for 30 days, during which you can
+        generate and re-download your report as many times as needed. There are no recurring fees.
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="faq-item">
+      <div class="faq-q">Can I generate the report more than once?</div>
+      <div class="faq-a">
+        Yes. Within 30 days of your purchase you can click "Download handoff report" as many
+        times as you like. Each generation fetches the latest live data from your store, so
+        the report always reflects your current setup.
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="faq-item">
+      <div class="faq-q">What if my payment was declined?</div>
+      <div class="faq-a">
+        Return to the app dashboard in your Shopify Admin and click "Generate handoff report — $29"
+        again. This will start a fresh payment session. If the problem persists, check that your
+        Shopify billing method is up to date under Settings → Billing in your Shopify Admin.
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="faq-item">
+      <div class="faq-q">My 30 days expired — do I need to pay again?</div>
+      <div class="faq-a">
+        Yes. After 30 days the purchase expires and a new one-time payment of $29 is required
+        to generate an updated report. This also ensures your report reflects the current state
+        of the store rather than a stale snapshot.
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="faq-item">
+      <div class="faq-q">How do I request deletion of my data?</div>
+      <div class="faq-a">
+        Uninstalling the app automatically deletes your session data. To request deletion of
+        your purchase record before the 90-day automatic expiry, email
+        <a href="mailto:support@launchgate.app">support@launchgate.app</a> and we'll remove
+        it within 2 business days.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="contact-box">
+    <h2>Need more help?</h2>
+    <p>
+      Email us at <a href="mailto:support@launchgate.app">support@launchgate.app</a>
+      and we'll get back to you within <strong>2 business days</strong>.
+    </p>
+    <p style="margin-top:8px; color:#6d7175; font-size:14px;">
+      Please include your shop domain (e.g. your-store.myshopify.com) in your message
+      so we can look up your account quickly.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

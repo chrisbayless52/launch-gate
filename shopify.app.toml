@@ -1,0 +1,28 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "d0ff426353cda30b5034649635a01dc4"
+name = "LaunchGate"
+application_url = "https://gasoline-impact-wage-hong.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+scopes = "read_products,read_themes,read_shipping,read_payment_terms,read_customers,read_orders,read_markets,read_price_rules"
+
+[webhooks]
+api_version = "2026-07"
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/app/uninstalled"
+  topics = [ "app/uninstalled" ]
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/app/scopes_update"
+  topics = [ "app/scopes_update" ]
+
+
+[auth]
+redirect_urls = [ "https://gasoline-impact-wage-hong.trycloudflare.com/api/auth" ]
+
+[build]
+include_config_on_deploy = true
+automatically_update_urls_on_dev = true
