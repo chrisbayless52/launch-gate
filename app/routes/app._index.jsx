@@ -93,6 +93,7 @@ export const loader = async ({ request }) => {
 // Action — billing check + PDF generation (base64 for iframe download)
 // ---------------------------------------------------------------------------
 export const action = async ({ request }) => {
+  console.log("[action] method:", request.method, "auth header:", request.headers.get("authorization") ? "present" : "MISSING");
   const { admin, session } = await authenticate.admin(request);
   const formData = await request.formData();
   const credentialNotes = String(formData.get("credentialNotes") ?? "").slice(0, 2000);
