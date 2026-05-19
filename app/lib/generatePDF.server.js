@@ -111,7 +111,7 @@ function section(title, accentColor, content) {
 
 function buildHTML(storeData, credentialNotes) {
   const {
-    store = {},
+    store: rawStore,
     apps = [],
     theme,
     paymentSettings,
@@ -120,6 +120,7 @@ function buildHTML(storeData, credentialNotes) {
     domains = [],
     generatedAt,
   } = storeData;
+  const store = rawStore ?? {};
 
   const generatedDate = formatDateTime(generatedAt);
   const storeName = store.name ?? "Unknown Store";
