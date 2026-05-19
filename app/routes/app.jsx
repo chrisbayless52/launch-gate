@@ -7,7 +7,7 @@ import "@shopify/polaris/build/esm/styles.css";
 
 export const loader = async () => {
   // eslint-disable-next-line no-undef
-  return { apiKey: process.env.SHOPIFY_API_KEY || "" };
+  return { apiKey: (process.env.SHOPIFY_API_KEY || "").trim() };
 };
 
 export default function App() {
