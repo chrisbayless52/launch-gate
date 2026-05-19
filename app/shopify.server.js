@@ -7,6 +7,40 @@ import {
 import { PrismaSessionStorage } from "@shopify/shopify-app-session-storage-prisma";
 import prisma from "./db.server";
 
+class LoggingSessionStorage {
+  constructor(inner) { this.inner = inner; }
+  async storeSession(session) {
+    console.log("[session] storeSession id:", session.id, "shop:", session.shop, "hasToken:", !!session.accessToken);
+    try {
+      const r = await this.inner.storeSession(session);
+      console.log("[session] storeSession SUCCESS");
+      return r;
+    } catch (err) {
+      console.error("[session] storeSession FAILED:", err.message);
+      throw err;
+    }
+  }
+  async loadSession(id) {
+    console.log("[session] loadSession id:", id);
+    try {
+      const r = await this.inner.loadSession(id);
+      console.log("[session] loadSession result:", r ? `FOUND shop:${r.shop} hasToken:${!!r.accessToken}` : "NOT FOUND");
+      return r;
+    } catch (err) {
+      console.error("[session] loadSession FAILED:", err.message);
+      throw err;
+    }
+  }
+  async deleteSession(id) { return this.inner.deleteSession(id); }
+  async deleteSessions(ids) { return this.inner.deleteSessions(ids); }
+  async findSessionsByShop(shop) {
+    console.log("[session] findSessionsByShop:", shop);
+    const r = await this.inner.findSessionsByShop(shop);
+    console.log("[session] findSessionsByShop count:", r.length);
+    return r;
+  }
+}
+
 const shopify = shopifyApp({
   apiKey: process.env.SHOPIFY_API_KEY,
   apiSecretKey: process.env.SHOPIFY_API_SECRET || "",
@@ -14,7 +48,7 @@ const shopify = shopifyApp({
   scopes: process.env.SCOPES?.split(","),
   appUrl: process.env.SHOPIFY_APP_URL || "",
   authPathPrefix: "/auth",
-  sessionStorage: new PrismaSessionStorage(prisma),
+  sessionStorage: new LoggingSessionStorage(new PrismaSessionStorage(prisma)),
   distribution: AppDistribution.AppStore,
   ...(process.env.SHOP_CUSTOM_DOMAIN
     ? { customShopDomains: [process.env.SHOP_CUSTOM_DOMAIN] }
