@@ -415,7 +415,7 @@ export default function Index() {
     } catch {
       shopify.toast.show("Download failed — please try again", { isError: true });
     }
-  }, [fetcher.data?.pdfBase64]);
+  }, [fetcher.data]);
 
   const handleBuy = () => {
     billingFetcher.submit({}, { method: "POST", action: "/api/billing/initiate" });
