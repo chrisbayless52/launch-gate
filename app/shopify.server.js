@@ -41,9 +41,14 @@ class LoggingSessionStorage {
   }
 }
 
+const apiKey = process.env.SHOPIFY_API_KEY ?? "";
+const apiSecret = process.env.SHOPIFY_API_SECRET ?? "";
+console.log("[config] SHOPIFY_API_KEY length:", apiKey.length, "value:", JSON.stringify(apiKey));
+console.log("[config] SHOPIFY_API_SECRET length:", apiSecret.length, "starts:", apiSecret.slice(0, 8));
+
 const shopify = shopifyApp({
-  apiKey: process.env.SHOPIFY_API_KEY,
-  apiSecretKey: process.env.SHOPIFY_API_SECRET || "",
+  apiKey: apiKey,
+  apiSecretKey: apiSecret,
   apiVersion: ApiVersion.October25,
   scopes: process.env.SCOPES?.split(","),
   appUrl: process.env.SHOPIFY_APP_URL || "",
