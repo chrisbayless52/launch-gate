@@ -27,7 +27,9 @@ import {
 // Loader
 // ---------------------------------------------------------------------------
 export const loader = async ({ request }) => {
+  console.log("[app._index] loader start");
   const { admin, session } = await authenticate.admin(request);
+  console.log("[app._index] authenticated, shop:", session?.shop);
 
   const thirtyDaysAgo = new Date();
   thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
@@ -82,6 +84,7 @@ export const loader = async ({ request }) => {
     }
   }
 
+  console.log("[app._index] loader done, hasPurchase:", !!activePurchase);
   return {
     storeData,
     hasPurchase: !!activePurchase,
