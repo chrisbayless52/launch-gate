@@ -41,8 +41,8 @@ class LoggingSessionStorage {
   }
 }
 
-const apiKey = process.env.SHOPIFY_API_KEY ?? "";
-const apiSecret = process.env.SHOPIFY_API_SECRET ?? "";
+const apiKey = (process.env.SHOPIFY_API_KEY ?? "").trim();
+const apiSecret = (process.env.SHOPIFY_API_SECRET ?? "").trim();
 console.log("[config] SHOPIFY_API_KEY length:", apiKey.length, "value:", JSON.stringify(apiKey));
 console.log("[config] SHOPIFY_API_SECRET length:", apiSecret.length, "starts:", apiSecret.slice(0, 8));
 
