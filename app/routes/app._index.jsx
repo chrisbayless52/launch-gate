@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useFetcher, useLoaderData, useNavigation, useSearchParams } from "react-router";
+import { useFetcher, useLoaderData, useNavigation, useRouteError, useSearchParams } from "react-router";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { boundary } from "@shopify/shopify-app-react-router/server";
 import { authenticate } from "../shopify.server";
@@ -107,19 +107,24 @@ export const action = async ({ request }) => {
     return { error: "Payment required", code: "PAYMENT_REQUIRED" };
   }
 
-  const storeData = await fetchStoreData(admin);
-  const pdfBuffer = await generateHandoffPDF(storeData, credentialNotes);
+  try {
+    const storeData = await fetchStoreData(admin);
+    const pdfBuffer = await generateHandoffPDF(storeData, credentialNotes);
 
-  const storeName = (storeData.store?.name ?? "store")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-  const date = new Date().toISOString().slice(0, 10);
+    const storeName = (storeData.store?.name ?? "store")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+    const date = new Date().toISOString().slice(0, 10);
 
-  return {
-    pdfBase64: pdfBuffer.toString("base64"),
-    filename: `launchgate-handoff-${storeName}-${date}.pdf`,
-  };
+    return {
+      pdfBase64: pdfBuffer.toString("base64"),
+      filename: `launchgate-handoff-${storeName}-${date}.pdf`,
+    };
+  } catch (err) {
+    console.error("[action] PDF generation failed:", err);
+    return { error: err.message ?? "PDF generation failed", code: "PDF_ERROR" };
+  }
 };
 
 // ---------------------------------------------------------------------------
@@ -387,6 +392,10 @@ export default function Index() {
       shopify.toast.show("Purchase required to generate a report", { isError: true });
       return;
     }
+    if (fetcher.data?.code === "PDF_ERROR") {
+      shopify.toast.show(`PDF error: ${fetcher.data.error}`, { isError: true });
+      return;
+    }
     if (!fetcher.data?.pdfBase64) return;
 
     try {
@@ -447,7 +456,7 @@ export default function Index() {
 }
 
 export function ErrorBoundary() {
-  return boundary.error();
+  return boundary.error(useRouteError());
 }
 
 export const headers = (headersArgs) => boundary.headers(headersArgs);
