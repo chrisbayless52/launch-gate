@@ -27,7 +27,7 @@ customer_deletion_url = "/webhooks/customers/redact"
 shop_deletion_url = "/webhooks/shop/redact"
 
 [auth]
-redirect_urls = [ "https://getlaunchgate.com/api/auth" ]
+redirect_urls = [ "https://getlaunchgate.com/auth/callback" ]
 
 [build]
 automatically_update_urls_on_dev = true
