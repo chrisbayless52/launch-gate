@@ -29,7 +29,7 @@ export async function createHandoffCharge(admin, shopDomain) {
   if (!appUrl) throw new Error("SHOPIFY_APP_URL is not set");
 
   const returnUrl = `${appUrl}/billing/confirm`;
-  const isTest = process.env.NODE_ENV !== "production";
+  const isTest = process.env.BILLING_TEST !== "false";
 
   const response = await admin.graphql(
     `#graphql
