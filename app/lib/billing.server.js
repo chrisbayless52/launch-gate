@@ -60,7 +60,14 @@ export async function createHandoffCharge(admin, shopDomain) {
     }
   );
 
+  if (!response.ok) {
+    const body = await response.text().catch(() => "(unreadable)");
+    console.error(`[billing] GraphQL request failed: ${response.status}`, body);
+    throw new Error(`Shopify billing API returned ${response.status}: ${body}`);
+  }
+
   const json = await response.json();
+  console.log("[billing] mutation response:", JSON.stringify(json));
   const result = json.data?.appPurchaseOneTimeCreate;
 
   if (result?.userErrors?.length) {
