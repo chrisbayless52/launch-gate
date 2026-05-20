@@ -5,6 +5,7 @@ import { boundary } from "@shopify/shopify-app-react-router/server";
 import { authenticate } from "../shopify.server";
 import { fetchStoreData } from "../lib/storeData.server";
 import { generateHandoffPDF } from "../lib/generatePDF.server";
+import { createHandoffCharge } from "../lib/billing.server";
 import db from "../db.server";
 
 import {
@@ -95,6 +96,20 @@ export const loader = async ({ request }) => {
 export const action = async ({ request }) => {
   const { admin, session } = await authenticate.admin(request);
   const formData = await request.formData();
+  const intent = formData.get("_intent");
+
+  // ---- Billing intent: initiate Shopify one-time charge ----
+  if (intent === "billing") {
+    try {
+      const { confirmationUrl, id } = await createHandoffCharge(admin, session.shop);
+      return { confirmationUrl, id };
+    } catch (err) {
+      console.error("[action] billing initiation failed:", err);
+      return { error: err.message ?? "Failed to create charge", code: "BILLING_ERROR" };
+    }
+  }
+
+  // ---- Default intent: generate PDF ----
   const credentialNotes = String(formData.get("credentialNotes") ?? "").slice(0, 2000);
 
   const thirtyDaysAgo = new Date();
@@ -355,7 +370,6 @@ export default function Index() {
   const [searchParams] = useSearchParams();
   const navigation = useNavigation();
   const fetcher = useFetcher();
-  const billingFetcher = useFetcher();
   const shopify = useAppBridge();
 
   const [notes, setNotes] = useState("");
@@ -363,8 +377,8 @@ export default function Index() {
   const paymentJustConfirmed = paymentParam === "success";
 
   const isPageLoading = navigation.state === "loading";
-  const isGenerating = fetcher.state !== "idle";
-  const isBillingPending = billingFetcher.state !== "idle";
+  const isGenerating = fetcher.state !== "idle" && !fetcher.data?.confirmationUrl;
+  const isBillingPending = fetcher.state !== "idle" && !fetcher.data?.pdfBase64;
 
   // Toast for payment outcomes
   useEffect(() => {
@@ -381,15 +395,19 @@ export default function Index() {
   // Must navigate the top frame (not the iframe) so Shopify's payment
   // page renders correctly. App Bridge v4 uses window.top for this.
   useEffect(() => {
-    if (!billingFetcher.data?.confirmationUrl) return;
+    if (!fetcher.data?.confirmationUrl) return;
     // eslint-disable-next-line no-undef
-    window.top.location.href = billingFetcher.data.confirmationUrl;
-  }, [billingFetcher.data?.confirmationUrl]);
+    window.top.location.href = fetcher.data.confirmationUrl;
+  }, [fetcher.data?.confirmationUrl]);
 
   // Trigger file download when PDF base64 data is returned
   useEffect(() => {
     if (fetcher.data?.code === "PAYMENT_REQUIRED") {
       shopify.toast.show("Purchase required to generate a report", { isError: true });
+      return;
+    }
+    if (fetcher.data?.code === "BILLING_ERROR") {
+      shopify.toast.show(`Billing error: ${fetcher.data.error}`, { isError: true });
       return;
     }
     if (fetcher.data?.code === "PDF_ERROR") {
@@ -418,7 +436,7 @@ export default function Index() {
   }, [fetcher.data]);
 
   const handleBuy = () => {
-    billingFetcher.submit({}, { method: "POST", action: "/api/billing/initiate" });
+    fetcher.submit({ _intent: "billing" }, { method: "POST" });
   };
 
   const handleGenerate = () => {
